@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 function App() {
     return (
         <>
             <p>Home</p>
-            <a href="Shop">Shop page</a>
+            <Link to="Shop">Shop page</Link>
         </>
     );
 }
