@@ -7,7 +7,8 @@ import Products from "./Product";
 import useGetData from "../Hooks/GetData";
 
 const Shop = () => {
-    [data, error, loading]=useGetData("https://fakestoreapi.com/products")
+    [data, error, loading] = useGetData("https://fakestoreapi.com/products");
+    // console.log(data);
     return (
         <>
             <Products productsData={data ? data : "Loading..."}></Products>
