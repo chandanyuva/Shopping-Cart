@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Products from "./Products";
 import useGetData from "../Hooks/GetData";
 
