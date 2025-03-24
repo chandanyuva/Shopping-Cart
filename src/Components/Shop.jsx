@@ -3,15 +3,18 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import { useEffect, useState } from "react";
-import Products from "./Product";
+import Products from "./Products";
 import useGetData from "../Hooks/GetData";
 
 const Shop = () => {
-    [data, error, loading] = useGetData("https://fakestoreapi.com/products");
-    // console.log(data);
+    let [data, error, loading] = useGetData(
+        "https://fakestoreapi.com/products"
+    );
+    // console.log(data,error,loading,"bye");
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>A network error was encountered</p>;
     return (
         <>
-            <Products productsData={data ? data : "Loading..."}></Products>
             <div className="flex justify-center">
                 <Stack
                     direction="row"
@@ -23,6 +26,9 @@ const Shop = () => {
                     </Button>
                     <Button>Shop</Button>
                 </Stack>
+            </div>
+            <div>
+                <Products productsData={data}></Products>
             </div>
         </>
     );
