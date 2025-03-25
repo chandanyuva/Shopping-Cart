@@ -27,9 +27,17 @@ const Shop = () => {
                     <Button>Shop</Button>
                 </Stack>
             </div>
-            <div>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <div>
+                    <Products productsData={data}></Products>
+                </div>
+            )}
+            {error ? <p>A Network error was encountered</p> : ""}
+            {/* <div>
                 <Products productsData={data}></Products>
-            </div>
+            </div> */}
         </>
     );
 };
