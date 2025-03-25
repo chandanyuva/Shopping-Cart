@@ -22,17 +22,3 @@ const useGetData = (url) => {
 };
 
 export default useGetData;
-
-// const Image = () => {
-//   const { imageURL, error, loading } = useImageURL();
-
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>A network error was encountered</p>;
-
-//   return (
-//     <>
-//       <h1>An image</h1>
-//       <img src={imageURL} alt={"placeholder text"} />
-//     </>
-//   );
-// };
