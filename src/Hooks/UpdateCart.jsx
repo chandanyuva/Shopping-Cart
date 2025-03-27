@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { useState } from "react";
+const [inCart, setInCart] = useState({ id: "", count: 0 });
 
-const useUpdateCart=({})=>{
-    useEffect(()=>{},[])
-}
+const UpdateCart = (buy, setBuy) => {};
 
-export default useUpdateCart;
+export default UpdateCart;

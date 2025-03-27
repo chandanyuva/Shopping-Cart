@@ -1,17 +1,12 @@
 import { useState } from "react";
 import Product from "./Product";
 
-const ProductsList = ({ productsData }) => {
+const ProductsList = ({ productsData, cart }) => {
     // console.log(productsData);
-    const [inCart, setInCart] = useState({ id: "", count: 0 });
-
+    console.log(cart.calculateTotal());
     const productList = productsData.map((element) => {
         return (
-            <Product
-                element={element}
-                key={element.id}
-                cart={[inCart, setInCart]}
-            ></Product>
+            <Product element={element} key={element.id} cart={cart}></Product>
         );
     });
     // console.log(productList);

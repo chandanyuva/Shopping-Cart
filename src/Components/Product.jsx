@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
-
 const Product = ({ element, cart }) => {
     const [buy, setBuy] = useState(0);
-    const [inCart, setInCart] = cart;
-
-    useEffect(() => {
-        // console.log(element.id, buy);
-        setInCart({ id: `${element.id}`, count: buy });
-    }, [buy]);
+    // console.log(cart);
     const styles = {
         card: {
             border: "1px solid #ddd",
@@ -90,6 +84,7 @@ const Product = ({ element, cart }) => {
                     <button
                         onClick={(e) => {
                             if (buy > 0) {
+                                cart.decreaseQuantity(element.id);
                                 setBuy(buy - 1);
                             }
                         }}
@@ -102,6 +97,7 @@ const Product = ({ element, cart }) => {
                         onClick={(e) => {
                             // console.log(buy);
                             if (buy < 10) {
+                                cart.addToCart(element);
                                 setBuy(buy + 1);
                             }
                         }}
