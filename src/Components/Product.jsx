@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../Context/cartContext";
 
-const Product = ({ element, cart }) => {
-    const [buy, setBuy] = useState(0);
-    const [inCart, setInCart] = cart;
+const Product = ({ element }) => {
+    const { cart, addToCart, incrementItem, decrementItem } =
+        useContext(CartContext);
 
-    useEffect(() => {
-        // console.log(element.id, buy);
-        setInCart({ id: `${element.id}`, count: buy });
-    }, [buy]);
+    const cartItem = cart.find((item) => item.id === element.id);
+
     const styles = {
         card: {
             border: "1px solid #ddd",
@@ -28,8 +27,6 @@ const Product = ({ element, cart }) => {
             width: "70%",
             height: "150px",
             objectFit: "contain",
-            // border: "solid #c6c6c6",
-            // borderRadius: "8px",
             margin: "2px",
         },
         content: {
@@ -44,7 +41,6 @@ const Product = ({ element, cart }) => {
         title: {
             fontSize: "14px",
             fontWeight: "bold",
-            // border: "solid #c6c6c6",
         },
         description: {
             fontSize: "12px",
@@ -61,7 +57,6 @@ const Product = ({ element, cart }) => {
         },
         border: {
             border: "solid #ddd",
-            // border: "solid #c6c6c6",
             borderRadius: "8px",
         },
     };
@@ -70,7 +65,10 @@ const Product = ({ element, cart }) => {
         <div style={styles.card}>
             <img src={element.image} alt={element.title} style={styles.image} />
             <div style={styles.content}>
-                <h2 style={styles.title} className="text-sm text-pretty">
+                <h2
+                    style={styles.title}
+                    className="text-sm text-pretty line-clamp-2"
+                >
                     {element.title}
                 </h2>
                 <div
@@ -86,29 +84,33 @@ const Product = ({ element, cart }) => {
                 <p style={styles.description} className="line-clamp-3">
                     {element.description}
                 </p>
-                <div className="flex border rounded-sm w-min divide-x-1 ">
-                    <button
-                        onClick={(e) => {
-                            if (buy > 0) {
-                                setBuy(buy - 1);
-                            }
-                        }}
-                        className="pr-2 pl-2"
-                    >
-                        -
-                    </button>
-                    <p className="pr-2 pl-2">{buy}</p>
-                    <button
-                        onClick={(e) => {
-                            // console.log(buy);
-                            if (buy < 10) {
-                                setBuy(buy + 1);
-                            }
-                        }}
-                        className="pr-2 pl-2"
-                    >
-                        +
-                    </button>
+                <div className="flex  w-min divide-x-1 ">
+                    {cartItem ? (
+                        // Show increment/decrement buttons if item is in cart
+                        <div className="flex items-center border rounded-sm">
+                            <button
+                                onClick={() => decrementItem(element.id)}
+                                className="bg-red-500 text-white px-2"
+                            >
+                                -
+                            </button>
+                            <span className="px-4">{cartItem.count}</span>
+                            <button
+                                onClick={() => incrementItem(element.id)}
+                                className="bg-green-500 text-white px-2"
+                            >
+                                +
+                            </button>
+                        </div>
+                    ) : (
+                        // Show "Add to Cart" button if item is not in cart
+                        <button
+                            onClick={() => addToCart(element, 1)}
+                            className="p-1  bg-blue-600 text-white border-none font-semibold rounded-lg hover:bg-blue-700 transition w-24"
+                        >
+                            Add to Cart
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

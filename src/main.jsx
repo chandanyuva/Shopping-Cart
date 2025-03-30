@@ -2,9 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
-import "./index.css";
+import "./main.css";
 import Shop from "./Components/Shop.jsx";
 import Cart from "./Components/Cart.jsx";
+import { CartProvider } from "./Context/cartContext.jsx";
+import { ProductProvider } from "./Context/productContext.jsx";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <RouterProvider router={router} />
+        <ProductProvider>
+            <CartProvider>
+                <RouterProvider router={router} />
+            </CartProvider>
+        </ProductProvider>
     </StrictMode>
 );

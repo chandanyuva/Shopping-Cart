@@ -16,9 +16,9 @@ const useGetData = (url) => {
             .then((response) => setData(response))
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
-    }, []);
+    }, [url]);
     // console.log(data,error,loading,"hi")
-    return [ data, error, loading ];
+    return [data, error, loading];
 };
 
 export default useGetData;
