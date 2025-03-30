@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import "./main.css";
 import Shop from "./Components/Shop.jsx";
 import Cart from "./Components/Cart.jsx";
+import Payment from "./Components/Payment.jsx";
 import { CartProvider } from "./Context/cartContext.jsx";
 import { ProductProvider } from "./Context/productContext.jsx";
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         path: "/Cart",
         element: <Cart />,
     },
+    { path: "/payment", element: <Payment /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

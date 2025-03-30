@@ -102,6 +102,13 @@ const Cart = () => {
                                         Total Cost: ${totalCost.toFixed(2)}
                                     </h2>
                                 </div>
+                                <div className="text-center">
+                                    <Link to="/payment" state={{ totalCost }}>
+                                        <button className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition">
+                                            Checkout
+                                        </button>
+                                    </Link>
+                                </div>
                             </>
                         ) : (
                             <p>
