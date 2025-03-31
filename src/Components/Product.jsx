@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/cartContext";
+import PropTypes from "prop-types";
 
 const Product = ({ element }) => {
     const { cart, addToCart, incrementItem, decrementItem } =
@@ -118,3 +119,7 @@ const Product = ({ element }) => {
 };
 
 export default Product;
+
+Product.propTypes = {
+    element: PropTypes.array.isRequired,
+};

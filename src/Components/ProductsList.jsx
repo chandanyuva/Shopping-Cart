@@ -1,4 +1,5 @@
 import Product from "./Product";
+import PropTypes from "prop-types";
 
 const ProductsList = ({ productsData }) => {
     const productList = productsData.map((element) => {
@@ -11,3 +12,7 @@ const ProductsList = ({ productsData }) => {
     );
 };
 export default ProductsList;
+
+ProductsList.propTypes = {
+    productsData: PropTypes.array.isRequired,
+};

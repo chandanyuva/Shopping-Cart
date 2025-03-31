@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import useGetData from "../Hooks/GetData";
+import PropTypes from "prop-types";
 
 export const ProductContext = createContext();
 
@@ -12,4 +13,8 @@ export const ProductProvider = ({ children }) => {
             {children}
         </ProductContext.Provider>
     );
+};
+
+ProductProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };
