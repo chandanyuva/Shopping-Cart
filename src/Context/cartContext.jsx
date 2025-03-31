@@ -49,9 +49,19 @@ export const CartProvider = ({ children }) => {
                     .filter((item) => item.count > 0) // Remove items with count 0
         );
     };
+    const cartSizeCal = () => {
+        return cart.length;
+    };
     return (
         <CartContext.Provider
-            value={{ cart, setCart, addToCart, incrementItem, decrementItem }}
+            value={{
+                cart,
+                setCart,
+                addToCart,
+                incrementItem,
+                decrementItem,
+                cartSizeCal,
+            }}
         >
             {children}
         </CartContext.Provider>

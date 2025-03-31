@@ -5,9 +5,12 @@ import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import ProductsList from "./ProductsList";
 import { ProductContext } from "../Context/productContext";
+import { CartContext } from "../Context/cartContext";
 
 const Shop = () => {
     let { data, error, loading } = useContext(ProductContext);
+    let { cartSizeCal } = useContext(CartContext);
+    let cartSize = cartSizeCal();
     return (
         <div>
             <img
@@ -28,7 +31,12 @@ const Shop = () => {
                         </Button>
                         <Button>Shop</Button>
                         <Button>
-                            <Link to="/Cart">Cart</Link>
+                            <Link to="/Cart" className="flex items-center">
+                                Cart
+                                <span className="relative flex flex-row items-center justify-center w-6 h-6 m-2 bg-blue-500 text-white text-sm rounded-full">
+                                    {cartSize}
+                                </span>
+                            </Link>
                         </Button>
                     </Stack>
                 </div>

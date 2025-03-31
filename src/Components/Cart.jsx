@@ -8,7 +8,9 @@ import { useContext, useMemo } from "react";
 
 const Cart = () => {
     let { data, error, loading } = useContext(ProductContext);
-    const { cart, incrementItem, decrementItem } = useContext(CartContext);
+    const { cart, incrementItem, decrementItem, cartSizeCal } =
+        useContext(CartContext);
+    let cartSize = cartSizeCal();
     const cartProducts = useMemo(() => {
         return cart
             .map((cartItem) => {
@@ -44,7 +46,12 @@ const Cart = () => {
                     <Button>
                         <Link to="/Shop">Shop</Link>
                     </Button>
-                    <Button>Cart</Button>
+                    <Button className="flex items-center">
+                        Cart
+                        <span className="relative flex flex-row items-center justify-center w-6 h-6 m-2 bg-blue-500 text-white text-sm rounded-full">
+                            {cartSize}
+                        </span>
+                    </Button>
                 </Stack>
             </div>
             {loading ? (

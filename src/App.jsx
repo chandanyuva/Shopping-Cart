@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
+import { useContext } from "react";
+import { CartContext } from "./Context/cartContext";
 
 function App() {
+    let { cartSizeCal } = useContext(CartContext);
+    let cartSize = cartSizeCal();
     return (
         <>
             <div className="flex justify-center">
@@ -16,8 +20,13 @@ function App() {
                     <Button>
                         <Link to="/Shop">Shop</Link>
                     </Button>
-                    <Button>
-                        <Link to="/Cart">Cart</Link>
+                    <Button className="w-6">
+                        <Link to="/Cart" className="flex items-center">
+                            Cart
+                            <span className="relative flex flex-row items-center justify-center w-6 h-6 m-2 bg-blue-500 text-white text-sm rounded-full">
+                                {cartSize}
+                            </span>
+                        </Link>
                     </Button>
                 </Stack>
             </div>
