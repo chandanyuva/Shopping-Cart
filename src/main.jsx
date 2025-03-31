@@ -6,6 +6,7 @@ import "./main.css";
 import Shop from "./Components/Shop.jsx";
 import Cart from "./Components/Cart.jsx";
 import Payment from "./Components/Payment.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 import { CartProvider } from "./Context/cartContext.jsx";
 import { ProductProvider } from "./Context/productContext.jsx";
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <ErrorPage />,
     },
     {
         path: "/Shop",
